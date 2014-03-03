@@ -9,3 +9,4 @@ I have replace the pom.xml with a build.gradle
 The webapp deploy in tomcat and you can invoke it with http://localhost:8080/<context>/jersey-hello
 
 tested with Idea and tomcat 7.0.47
+Need to test more the gradle plugin: "war"
