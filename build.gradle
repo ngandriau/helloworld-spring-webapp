@@ -1,0 +1,28 @@
+apply plugin: "groovy"
+apply plugin: "java"
+apply plugin: "war"
+apply plugin: 'project-report'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile ("org.glassfish.jersey.containers:jersey-container-servlet:2.6") {
+        exclude group:"junit"
+    }
+
+    compile "org.glassfish.jersey.ext:jersey-spring3:2.6",
+
+            "org.springframework:spring-web:3.2.6.RELEASE",
+
+            "commons-logging:commons-logging:1.1"
+
+
+    testCompile "junit:junit-dep:4.11"
+}
+
+// cf http://www.gradle.org/docs/current/userguide/gradle_wrapper.html
+task wrapper(type: Wrapper) {
+    gradleVersion "1.10"
+}
