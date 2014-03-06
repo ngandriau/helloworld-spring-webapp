@@ -12,12 +12,25 @@ dependencies {
         exclude group:"junit"
     }
 
-    compile "org.glassfish.jersey.ext:jersey-spring3:2.6",
 
-            "org.springframework:spring-web:3.2.6.RELEASE",
+    // this one use spring 3.0.7, but we'll use the 3.2.8 from spring security"
+    compile ("org.springframework.security.oauth:spring-security-oauth2:1.0.5.RELEASE") {
+        //  this exclusion is important, else some java.lang.IncompatibleClassChangeError ex
+        //  http://stackoverflow.com/questions/18621484/spring-security-java-lang-incompatibleclasschangeerror-maven-dependency-managem
+        exclude group:"org.springframework", module:"spring-asm"
+    }
+
+    compile "org.glassfish.jersey.ext:jersey-spring3:2.6",
+            //declare dep on spring 3.2.3, but gradle upgrade to the one in spring-security (3.2.8)
+
+            'org.springframework.security:spring-security-core:3.2.1.RELEASE',
+            'org.springframework.security:spring-security-config:3.2.1.RELEASE',
+            'org.springframework.security:spring-security-web:3.2.1.RELEASE',
+
 
             "commons-logging:commons-logging:1.1"
 
+    providedCompile "javax.servlet:servlet-api:2.5"
 
     testCompile "junit:junit-dep:4.11"
 }

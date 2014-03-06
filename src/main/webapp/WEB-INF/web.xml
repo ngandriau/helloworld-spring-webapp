@@ -46,17 +46,32 @@
 
     <module-name>helloworld-spring</module-name>
 
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:springApplicationContext.xml</param-value>
+    </context-param>
+
+
+    <!--  Experimenting setting the spring security filter for oauth2 support-->
+    <!--<filter>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>springSecurityFilterChain</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+    <!--</filter-mapping>-->
+
+
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
-
-    <context-param>
-        <param-name>contextConfigLocation</param-name>
-        <param-value>classpath:applicationContext.xml</param-value>
-    </context-param>
+    <!--<listener>-->
+        <!--<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>-->
+    <!--</listener>-->
 
     <servlet>
-        <servlet-name>SpringApplication</servlet-name>
+        <servlet-name>jerseyServlet</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
         <init-param>
             <param-name>javax.ws.rs.Application</param-name>
@@ -65,8 +80,10 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>SpringApplication</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <servlet-name>jerseyServlet</servlet-name>
+        <url-pattern>/rest/*</url-pattern>
     </servlet-mapping>
+
+
 
 </web-app>
