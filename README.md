@@ -15,7 +15,7 @@ Need to test more the gradle plugin: "war"
 
 Securization of the rest resources with spring and oauth2 is under way, but not yet operational
 
-If you reactivate the 'springSecurityFilterChain' in web.xml, rest call fail.
+If you reactivate the filters: 'springSecurityFilterChain' and 'oauth2EndpointUrlFilter' in web.xml, rest call fail.
 
 In the end, you should be able to get a token with this call:
 
